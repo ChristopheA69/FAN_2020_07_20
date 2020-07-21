@@ -64,22 +64,24 @@
 
         <div class="panier" ng-controller="panierCtrl as panier">
             <h2>Mon Panier :</h2>
-            <table>
+            <table style="width:100%">
                 <tr>
                     <td>Objet</td>
+                    <td>Image</td>
                     <td>Quantité</td>
                     <td>Prix Unitaire</td>
                     <td>Prix Total</td>
                     <td>Modifier</td>
                 </tr>
-                <tr ng-repeat="obj in panier.arrayPanier" ng-click="onviewproduitclick(obj)">
+                <tr ng-repeat="obj in panier.arrayPanier">
                     <td>{{obj.nom}}</td>
+                    <td><img style="max-height: 64px;max-width: 64px;" src="/img/{{obj.img}}" alt=""></td>
                     <td>{{obj.qty}}</td>
                     <td>{{obj.prix | my_currency}}</td>
                     <td>{{obj.prix * obj.qty | my_currency}}</td>
                     <td>
-                        <button type="button" class="btn-warning" ng-click="removeQuant(obj)">-</button>
-                        <button type="button" class="btn-primary" ng-click="addQuant(obj)">+</button>
+                        <button type="button" class="btn btn-warning" ng-click="panier.removeQuant(obj)">-</button>
+                        <button type="button" class="btn btn-primary" ng-click="panier.addQuant(obj)">+</button>
                     </td>
                 </tr>
             </table>
@@ -96,8 +98,7 @@
                         <span style="color:darkblue"> {{prod.prix|my_currency}}</span>
                     </div>
                     <div style="display:inline-block">
-                        <button type="button" class="btn btn-primary" ng-click="onviewproduitclick(prod)">Voir
-                            produit</button>
+                        <button type="button" class="btn btn-primary" ng-click="onviewproduitclick(prod)">Voir produit</button>
                     </div>
                 </div>
             </div>
@@ -111,7 +112,7 @@
                     {{prd.produit.desc}}
                 </div>
                 <div class="col-lg-2">
-                    <img ng-src="/img/{{prd.produit.img}}.jpg" alt="beurre sans sel">
+                    <img ng-src="/img/{{prd.produit.img}}" alt="beurre sans sel" size=50%>
                     <button type="button" class="btn btn-info" ng-click="onaddcartclick(prd.produit)">Ajouter
                         panier</button>
                 </div>
