@@ -5,11 +5,22 @@
         .module('app')
         .service('produitService', Service)
 
-    Service.$inject = ['$http'];
-    function Service($http){
+    Service.$inject = ['$http','panierService'];
+    function Service($http,panierService){
         var _vm=this;
         this.arrayProduits=[];
         this.produit={};
+
+        this.ajouterProduitAuCaddie=function(produit){
+            if (undefined !== produit.qty) {
+                produit.qty+=1;    
+            }else {
+                var _prod = _vm.produit;
+                _prod.qty=1;
+                const tmp = Object.assign({}, _prod);
+                panierService.arrayPanier.push(tmp);
+            }
+        }
 
         this.getProduit=function(id){
             $http({url:'http://localhost:5635/produits/'+id+'?_expand=categorie', method:'GET'}).then(

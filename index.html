@@ -60,6 +60,7 @@
             <h2>Mon Panier :</h2>
             <table style="width:100%">
                 <tr>
+                    <td>Index</td>
                     <td>Objet</td>
                     <td>Image</td>
                     <td>Quantité</td>
@@ -67,7 +68,8 @@
                     <td>Prix Total</td>
                     <td>Modifier</td>
                 </tr>
-                <tr ng-repeat="obj in panier.arrayPanier">
+                <tr ng-repeat="obj in panier.arrayPanier track by $index">
+                    <td>{{$index}}</td>
                     <td>{{obj.nom}}</td>
                     <td><img style="max-height: 64px;max-width: 64px;" src="/img/{{obj.img}}" alt="jyvoirien"></td>
                     <td>{{obj.qty}}</td>
@@ -87,7 +89,7 @@
                 <div class="produits-produit" ng-repeat="prod in prds.arrayProduits">
 
                     <div style="display:inline-block">
-                        <img ng-src="/img/{{prod.img}}" style="max-height: 128px;max-width: 128px;" alt="alt" size=50%>
+                        <img ng-src="/img/{{prod.img}}" style="max-height: 128px;max-width: 128px;" alt="alt">
                     </div>
                     <div style="display:inline-block">
                         {{prod.nom}} <br />
@@ -95,6 +97,9 @@
                     </div>
                     <div style="display:inline-block">
                         <button type="button" class="btn btn-primary" ng-click="onviewproduitclick(prod)">Voir produit</button>
+                    </div>
+                    <div style="display:inline-block">
+                        <button type="button" class="btn btn-info" ng-click="onaddcartclick(prod)">Ajouter au panier</button>
                     </div>
                 </div>
             </div>
@@ -108,7 +113,7 @@
                     {{prd.produit.desc}}
                 </div>
                 <div class="col-lg-2">
-                    <img ng-src="/img/{{prd.produit.img}}" alt="alt" size=50%>
+                    <img ng-src="/img/{{prd.produit.img}}" style="max-height: 256px;max-width: 256px;" alt="alt" size=50%>
                     <button type="button" class="btn btn-info" ng-click="onaddcartclick(prd.produit)">Ajouter au panier</button>
                 </div>
             </div>
@@ -119,10 +124,11 @@
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/app/app.js"></script>
     <script src="/app/filters/currencyFilter.js"></script>
+    <script src="/app/panierService/panierService.js"></script>
     <script src="/app/produitService/produitService.js"></script>
     <script src="/app/produitCtrl/produitCtrl.js"></script>
     <script src="/app/produitsCtrl/produitsCtrl.js"></script>
     <script src="/app/panier/panierCtrl.js"></script>
 </body>
 
-</html>
+</html> 

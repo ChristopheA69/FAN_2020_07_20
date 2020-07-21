@@ -9,4 +9,7 @@ angular.module('app').controller('produitsCtrl', ['$scope','produitService',func
         // ou bien (sans recharger)
         prdService.setProduit(produit);
     }
+
+    $scope.onaddcartclick = prdService.ajouterProduitAuCaddie;
+
 }]);
