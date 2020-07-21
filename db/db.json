@@ -1,0 +1,66 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "nom": "alimentaire"
+    },
+    {
+      "id": 2,
+      "nom": "loisir"
+    },
+    {
+      "id": 3,
+      "nom": "divers"
+    }
+  ],
+  "produits": [
+    {
+      "id": 1,
+      "categorieId": 1,
+      "nom": "cidre breton",
+      "prix": 2.54,
+      "desc": "Super cidre breton",
+      "stars": 3,
+      "img": "5052-1.jpg",
+      "stock": 5
+    },
+    {
+      "id": 2,
+      "categorieId": 1,
+      "nom": "pastaga",
+      "prix": 12.9,
+      "desc": "Pastis de Marseille",
+      "stars": 5,
+      "img": "pastis.png",
+      "stock": 5
+    },
+    {
+      "categorieId": 1,
+      "nom": "Vittel",
+      "prix": 0.9,
+      "desc": "Eau minérale",
+      "stars": 1,
+      "img": "vittel.jpg",
+      "stock": 12,
+      "id": 3
+    }
+  ],
+  "panier": [
+    {
+      "id": 0,
+      "produits": [
+        {
+          "produitId": 1,
+          "qty": 2
+        },
+        {
+          "produitId": 1,
+          "qty": 1
+        }
+      ]
+    }
+  ],
+  "boutique": {
+    "raisonSociale": "mon ShOOping"
+  }
+}

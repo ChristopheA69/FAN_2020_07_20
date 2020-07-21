@@ -15,12 +15,6 @@
 </head>
 
 <body>
-    <!--<div ng-app="app" ng-init="chaine1='ma chaine 1';chaine2='ma chaine 2'">
-        {{chaine1}}
-    </div>
-
-    Kikoo-->
-
     <div ng-app="app">
 
         <nav class="navbar navbar-default" role="navigation">
@@ -75,7 +69,7 @@
                 </tr>
                 <tr ng-repeat="obj in panier.arrayPanier">
                     <td>{{obj.nom}}</td>
-                    <td><img style="max-height: 64px;max-width: 64px;" src="/img/{{obj.img}}" alt=""></td>
+                    <td><img style="max-height: 64px;max-width: 64px;" src="/img/{{obj.img}}" alt="jyvoirien"></td>
                     <td>{{obj.qty}}</td>
                     <td>{{obj.prix | my_currency}}</td>
                     <td>{{obj.prix * obj.qty | my_currency}}</td>
@@ -85,7 +79,6 @@
                     </td>
                 </tr>
             </table>
-
         </div>
 
         <div id="view-content">
@@ -93,6 +86,9 @@
             <div class="produits" ng-controller="produitsCtrl as prds">
                 <div class="produits-produit" ng-repeat="prod in prds.arrayProduits">
 
+                    <div style="display:inline-block">
+                        <img ng-src="/img/{{prod.img}}" style="max-height: 128px;max-width: 128px;" alt="alt" size=50%>
+                    </div>
                     <div style="display:inline-block">
                         {{prod.nom}} <br />
                         <span style="color:darkblue"> {{prod.prix|my_currency}}</span>
@@ -112,9 +108,8 @@
                     {{prd.produit.desc}}
                 </div>
                 <div class="col-lg-2">
-                    <img ng-src="/img/{{prd.produit.img}}" alt="beurre sans sel" size=50%>
-                    <button type="button" class="btn btn-info" ng-click="onaddcartclick(prd.produit)">Ajouter
-                        panier</button>
+                    <img ng-src="/img/{{prd.produit.img}}" alt="alt" size=50%>
+                    <button type="button" class="btn btn-info" ng-click="onaddcartclick(prd.produit)">Ajouter au panier</button>
                 </div>
             </div>
         </div>
@@ -124,8 +119,9 @@
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/app/app.js"></script>
     <script src="/app/filters/currencyFilter.js"></script>
-    <script src="/app/produitsCtrl/produitsCtrl.js"></script>
+    <script src="/app/produitService/produitService.js"></script>
     <script src="/app/produitCtrl/produitCtrl.js"></script>
+    <script src="/app/produitsCtrl/produitsCtrl.js"></script>
     <script src="/app/panier/panierCtrl.js"></script>
 </body>
 
