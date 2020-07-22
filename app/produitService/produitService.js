@@ -12,10 +12,11 @@
         this.produit={};
 
         this.ajouterProduitAuCaddie=function(produit){
-            if (undefined !== produit.qty) {
-                produit.qty+=1;    
-            }else {
-                var _prod = _vm.produit;
+            var prd=panierService.isAlreadyInCart(produit);
+            if (undefined !== prd) {
+                prd.qty+=1;    
+            } else {
+                var _prod = Object.assign({}, produit,{qty:1});
                 _prod.qty=1;
                 const tmp = Object.assign({}, _prod);
                 panierService.arrayPanier.push(tmp);
